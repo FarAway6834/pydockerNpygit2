@@ -9,11 +9,13 @@ _pip_uninstalling_argv = _pip_uninstalling_text.split()
 
 _pip_uninstall = lambda : (lambda x : lambda v : (lambda work=x.append(v) : _r(x))())(copy(_pip_uninstalling))
 
-_rm_self = lambda : _pip_uninstall('pydockerNpygit2')
+_rm_self = lambda f = _pip_uninstall() : f('pydockerNpygit2')
+_rm_pygit2 = lambda f = _pip_uninstall() : f('pygit2')
+_rm_docker = lambda f = _pip_uninstall() : f('docker')
 
 def main():
     _e(_rm_self)
-    _pip_uninstall('pygit2')
-    _pip_uninstall('docker')
+    _rm_pygit2()
+    _rm_docker()
 
 if __name__ == "__main__": main()
